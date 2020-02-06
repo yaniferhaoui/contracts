@@ -82,7 +82,7 @@ Object.keys(token.methods)
 
 In the command below, you need to provide the desired name, symbol et decimals
 ``` javascript
-await core.defineToken(token.address, 0, <NAME>, <SYMBOL>, <DECIMALS>)
+await core.defineToken(token.address, 0, "My Token", "MTK", 18)
 ```
 
 You can replay the token proxy methods you called at the step 6 to verify that it has now all its attribute defined.
