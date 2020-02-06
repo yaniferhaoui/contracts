@@ -12,12 +12,12 @@ The token will only provides you with the basic ERC20 features.
 
 ### Start
 
-Go into the Core module and start truffle
+1- Go into the Core module and start truffle
 ```bash
   cd c-layer-core && truffle develop
 ```
 
-Always reompile the contracts to ensure you will be using the latest version
+2- Always reompile the contracts to ensure you will be using the latest version
 ```javascript
 compile
 ```
@@ -39,6 +39,7 @@ delegate.address
 ```
 
 If your delegate contract was created correctly the previous command would have displayed your contract address
+If you are on a live network, you might want to backup this address for later use.
 
 4- Create a token core
 ```javascript
@@ -46,7 +47,8 @@ core = await TokenCore.new('My Token Core')
 core.address
 ```
 
-If your delegate contract was created correctly the previous command would have displayed your contract address
+If your token core contract was created correctly the previous command would have displayed your contract address
+If you are on a live network, you might want to backup this address for later use.
 
 5- Configure the token core with a delegate
 ```javascript
@@ -62,7 +64,8 @@ token = await TokenProxy.new(core.address)
 proxy.address
 ```
 
-You have deploy a ERC20 proxy.
+You have deployed a ERC20 proxy.
+If you are on a live network, you might want to backup this address for later use.
 It is already connected to the core, but it has no knowledge of itself.
 if you were to request its name, symbol, decimals, supplies or any balances they would all be empty:
 ```javascript
