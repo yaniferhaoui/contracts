@@ -32,7 +32,7 @@ await core.mint(token.address, accounts[0], "42".padEnd(18, "0"))
 
 ### Steps
 
-###### 1- Test transferability
+##### 1- Test transferability
 
 ```javascript
 token.canTransfer.call(accounts[0], accounts[1], "1000000000").then((x) => x.toString())
@@ -49,7 +49,7 @@ token.canTransfer.call(accounts[0], accounts[1], "1000000000".padEnd(18, "0")).t
 ```
 It should returns 4 (insufficient tokens)
 
-###### 2- Freezing an address
+##### 2- Freezing an address
 
 Let's start by sending some tokens to a friend:
 ```javascript
@@ -78,7 +78,7 @@ And a tranfer should fail. Optionnaly truffle might reports you with the followi
 token.transfer(accounts[0], 1, { from: accounts[1] })
 ```
 
-###### 3- Locking the token
+##### 3- Locking the token
 
 Sometime, it's not about a specific address but rather the token which need to be locked.
 
@@ -101,7 +101,7 @@ And a tranfer should fail. Optionnaly truffle might reports you with the followi
 token.transfer(accounts[0], 1, { from: accounts[2] })
 ```
 
-###### 4- Seize tokens
+##### 4- Seize tokens
 
 Although we frozen our friend and we locked the token, we can still recover our tokens.
 To do that we need to seize it with the following commands:
