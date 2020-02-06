@@ -20,7 +20,7 @@ core = await TokenCore.at("0x.......")
 token = await TokenProxy.at("0x.......");
 ```
 
-Otherwise, you will have to replay the steps from the [token creation tutorial](https://github.com/c-layer/contracts/blob/tutorials/tutorials/01-TokenCreation.md)
+Otherwise, you will have to replay the following steps from the [token creation tutorial](https://github.com/c-layer/contracts/blob/tutorials/tutorials/01-TokenCreation.md)
 ```javascript
 delegate = await TokenDelegate.new()
 core = await TokenCore.new('My Token Core')
