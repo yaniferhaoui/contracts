@@ -11,6 +11,13 @@ You should also have created a token. See the first tutorial [here](https://gith
 
 This tutorial will guide you how to manage the basic compliance features of a C-Layer token: seize, freeze, and canTransfer.
 
+### Start
+
+You must start `truffle` from the c-layer-core module
+```bash
+  cd c-layer-core && truffle develop
+```
+
 ### Load contracts
 
 If you are on a live network you can reimport the contract using the following command
