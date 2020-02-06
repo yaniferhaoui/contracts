@@ -91,7 +91,8 @@ You can replay the token proxy methods you called at the step 6 to verify that i
 The token supplies are still empty as we haven't minted any tokens.
 Let's do it now:
 ``` javascript
-await core.mint(token.address, accounts[0], <TOTAL_SUPPLY>);
+supply = "42".padEnd(18, "0")
+await core.mint(token.address, accounts[0], supply);
 token.totalSupply()
 ```
 
