@@ -44,6 +44,11 @@ The first currency (ETH by default) will be the counter currency against which a
 rates.rates().then((result) => result[1].map((x) => x.toString()))
 ```
 
+You may also look at the different methods available
+```javascript
+Object.keys(users.methods)
+```
+
 ##### 2- Updates new rates
 
 As solidity does not support float precision, the rates are not stored directly.
