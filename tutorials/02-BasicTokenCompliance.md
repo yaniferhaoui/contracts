@@ -4,7 +4,8 @@
 ### Requirements
 
 Your environment is setup as described here (https://github.com/c-layer/contracts/blob/tutorials/tutorials/Tutorials.md#requirements)).
-You should have created a token. See the first tutorial [here](https://github.com/c-layer/contracts/blob/tutorials/tutorials/01-TokenCreation.md) if needed.
+
+You should also have created a token. See the first tutorial [here](https://github.com/c-layer/contracts/blob/tutorials/tutorials/01-TokenCreation.md) if needed.
 
 ### Goals
 
