@@ -9,7 +9,7 @@ See the [requirements](#requirements) for more information.
 ### Beginner level
 
 01. [Your First Token](./01-TokenCreation.md)
-02. [Transfering Tokens](./02-TokenTransfer.md)
+02. [Basic Compliance](./02-BasicTokenCompliance.md)
 03. [Becoming a rates provider](./03-RatesProvider.md)
 04. [Any Users can register](./04-UserRegistry.md)
 
