@@ -39,9 +39,17 @@ An alternative is to install node on your environment and add truffle and the ne
 `npm i -g truffle ganache-cli`
 
 ##### 2- Node packages
-Once truffle is installed, you may proceed to install the different node packages:
+Once truffle is installed, you may proceed to install the different node packages for each module:
 - In the ```c-layer-core``` directory run: `npm install`
 - In the ```c-layer-oracle``` directory run: `npm install`
+
+##### 3- Live network
+If you plan to run the tutorial on a live network (either ropsten or mainnet), you will need to configure an infura projectId and your mnemonic.
+
+The infura projectId may be obtain from infura website once logged in.
+A mnemonic can be generated with [myetherwallet](https://www.myetherwallet.com/create-wallet)
+
+Renaming the `secret.json` file into `.secret.json` and edit it with the correct projectId and mnemonic values.
 
 
 
