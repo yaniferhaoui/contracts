@@ -1,5 +1,5 @@
 
-# Token Creation
+# Basic Token Compliance
 
 ### Requirements
 
