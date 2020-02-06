@@ -3,6 +3,7 @@
 
 A Step by Step learning for the C-Layer.
 This tutorial requires you have truffle already installed.
+
 [See the requirements below for more information](#requirements).
 
 ### Beginner level
