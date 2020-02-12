@@ -60,7 +60,7 @@ You have now obtain a core. In the following steps, we will see how to deploy a 
 ##### 6- Create a token proxy
 ```javascript
 token = await TokenProxy.new(core.address)
-proxy.address
+token.address
 ```
 
 You have deployed a ERC20 proxy.
