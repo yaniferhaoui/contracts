@@ -34,7 +34,7 @@ core = await TokenCore.new('My Token Core')
 core.defineTokenDelegate(0, delegate.address, [])
 token = await TokenProxy.new(core.address)
 await core.defineToken(token.address, 0, "My Token", "MTK", 18)
-await core.mint(token.address, accounts[0], "42".padEnd(18, "0"))
+await core.mint(token.address, accounts[0], "42" + "0".padEnd(18, "0"))
 ```
 
 ### Steps
@@ -52,7 +52,7 @@ Other transfer code are defined in the [TokenStorage](https://github.com/c-layer
 
 You can try for example to send to many tokens as below
 ```javascript
-token.canTransfer.call(accounts[0], accounts[1], "1000000000".padEnd(18, "0")).then((x) => x.toString())
+token.canTransfer.call(accounts[0], accounts[1], "1000" + "0.padEnd(18, "0")).then((x) => x.toString())
 ```
 It should returns 4 (insufficient tokens)
 
@@ -77,12 +77,18 @@ core.freezeManyAddresses(token.address, [ accounts[1] ], until)
 The following commands should both return 6 (addresses frozen):
 ```javascript
 token.canTransfer.call(accounts[0], accounts[1], 1).then((x) => x.toString())
-token.canTransfer.call(accounts[0], accounts[1], 1).then((x) => x.toString())
+token.canTransfer.call(accounts[1], accounts[0], 1).then((x) => x.toString())
+```
+
+And the following should both return 1 as neither accounts[0] or accounts[2] are frozen:
+```javascript
+token.canTransfer.call(accounts[0], accounts[2], 1).then((x) => x.toString())
+token.canTransfer.call(accounts[2], accounts[0], 1).then((x) => x.toString())
 ```
 
 And a tranfer should fail. Optionnaly truffle might reports you with the following error ["CO03"](https://github.com/c-layer/contracts/blob/62e279570a13d732f50670bf59365fe2128258b5/c-layer-core/contracts/abstract/Core.sol#L17)
 ```javascript
-token.transfer(accounts[0], 1, { from: accounts[1] })
+token.transfer(accounts[0 ], 1, { from: accounts[1] })
 ```
 
 ##### 3- Locking the token
@@ -114,7 +120,7 @@ Although we frozen our friend and we locked the token, we can still recover our 
 To do that we need to seize it with the following commands:
 
 ```javascript
-core.seize(token.address, accounts[1], 10000)
+core.seize(token.address, accounts[1], 1000)
 ```
 
 We should have retrieve all our tokens back:
