@@ -91,7 +91,7 @@ The token supplies are still empty as we haven't minted any tokens.
 Let's do it now:
 ``` javascript
 supply = "42".padEnd(18, "0")
-await core.mint(token.address, accounts[0], supply);
+await core.mint(token.address, accounts[0], supply)
 token.totalSupply()
 ```
 
