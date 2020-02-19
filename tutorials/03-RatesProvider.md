@@ -46,13 +46,14 @@ rates.rates().then((result) => result[1].map((x) => x.toString()))
 
 You may also look at the different methods available
 ```javascript
-Object.keys(users.methods)
+Object.keys(rates.methods)
 ```
 
 ##### 2- Updates new rates
 
 As solidity does not support float precision, the rates are not stored directly.
 First a conversion must be done on client side to obtain an `uint256` compatible value.
+The conversion will be done in the lowest units of each currency (cents, wei, satoshi, ...).
 
 With a ETHBTC at 0.0199 and ETHUSD at 141.31.
 ETH has 18 decimals
@@ -63,17 +64,17 @@ USD has 2 decimals
 ETHBTC = Math.floor(10**18 / 0.0199) + "".padEnd(18 - 8, "0")
 ETHUSD = Math.floor(10**18 / 141.31) + "".padEnd(18 - 2, "0")
 ```
-To simplify the javascript command, the 18th last decimals have been truncated but to increase precision it is recommended to use all decimlas it in production.
+To simplify the javascript command as decimals are not well supported, the 18th last decimals have been truncated but to increase precision. However, it is recommended to use all decimals in production with using big number libraries.
 
-Then, it is only needed to defines the rates as follow
+Then, it is only needed to defines the rates as below. The parameter is an array of rates in the same order as currencies definition seen above (```rates.currencies()```).
 ```javascript
 rates.defineRatesExternal([ ETHBTC, 0, 0, ETHUSD ])
 ```
 
 Accessing the rates can be done per currency
 ```javascript
-rates.rate(web3.utils.fromAscii("BTC")).then(x => 10**(36-8) / x)
-rates.rate(web3.utils.fromAscii("USD")).then(x => 10**(36-2) / x)
+rates.rate(web3.utils.fromAscii("BTC")).then(x => Math.round(10**(36-8) / x))
+rates.rate(web3.utils.fromAscii("USD")).then(x => Math.round(10**(36-2) / x))
 ```
 
 It is also possible to check when the rates were updated:
@@ -90,7 +91,7 @@ ETHUSD = Math.floor(10**18 / 130.80) + "".padEnd(18 - 2, "0")
 rates.defineRatesExternal([ ETHBTC, 0, 0, ETHUSD ])
 ```
 
-Now, we can retrieve the previous rates for BTC
+Now, we can retrieve the rates history for BTC
 ```javascript
 rates.getPastEvents("Rate", { topics: [ null, web3.utils.toHex("BTC").padEnd(66, "0") ] }, { fromBlock: 0, toBlock: 10000 }).then((x) => x.map((y) => (y.args.rate.toString() == "0") ? "0" : 10**(36-8) / y.args.rate))
 ```
