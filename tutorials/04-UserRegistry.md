@@ -11,7 +11,7 @@ This tutorial will guide you to deploy a user registry and learn how to manage i
 
 ### Start
 
-You must start `truffle` from the c-layer-oracle module
+You must start `truffle` from the *c-layer-oracle* module
 ```bash
   cd c-layer-oracle && truffle develop
 ```
@@ -20,7 +20,9 @@ You must start `truffle` from the c-layer-oracle module
 
 ##### 1- Create a user registry
 
-Let's create a user registry with a base currency in CHF
+Let's create a user registry with a base currency in CHF.
+The registry will includes the n users from the accounts array.
+And the users will be valid until the 2025-01-01.
 
 ```javascript
 users = await UserRegistry.new("My User Registry", web3.utils.fromAscii("CHF"), accounts, new Date("2025-01-01").getTime() / 1000)
@@ -50,7 +52,7 @@ Object.keys(users.methods)
 
 ##### 2- Register another user
 
-You can add a new user through the following command
+You can add a new user through the following command. Replace the "0x....." with an address not already attributed to an existing user (ie from ```accounts```)
 ```javascript
 address = "0x......."
 users.registerUser(address, new Date("2025-01-01").getTime() / 1000)
@@ -75,7 +77,7 @@ users.validUserId(address).then((x) => x.toString())
 
 ##### 3- Suspend a user
 
-The following command will susped the user 2
+The following command will suspend the user 2.
 ```javascript
 users.suspendUser(2)
 ```
@@ -88,6 +90,8 @@ You can also request the valid user id for that user
 ```javascript
 users.validUserId(accounts[1]).then((x) => x.toString())
 ```
+A user is valid when it is not suspended and the validity date is in the future.
+`validUser()` will return the userId if the user exists and is valid, 0 otherwise.
 
 If you want to restore the user after, you can execute
 ```javascript
